@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gross Amount, GST, CGST, and SGST Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    label {
+      display: inline-block;
+      width: 100px;
+      text-align: right;
+      color: #333;
+    }
+
+    input[type="number"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background-color: #f9f9f9;
+      color: #333;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result-container {
+      margin-top: 20px;
+    }
+
+    .result-box {
+      display: inline-block;
+      width: 150px;
+      margin: 10px;
+    }
+
+    .cgst-box {
+      background-color: #66bb6a;
+    }
+
+    .sgst-box {
+      background-color: #ff7043;
+    }
+
+    .disclaimer {
+      margin-top: 20px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gross Amount, GST, CGST, and SGST Calculator</h1>
+  <label for="grossAmount">Gross Amount (INR):</label>
+  <input type="number" id="grossAmount" step="0.01">
+  <br>
+  <label for="gstRate">GST Rate (%):</label>
+  <input type="number" id="gstRate" step="0.01">
+  <br>
+  <br>
+  <button onclick="calculate()">Calculate</button>
+  <div class="result-container">
+    <div class="result-box sgst-box">
+      <label for="netAmount">Net Amount (INR):</label>
+      <input type="text" id="netAmount" readonly>
+    </div>
+    <div class="result-box cgst-box">
+      <label for="cgstAmount">CGST (INR):</label>
+      <input type="text" id="cgstAmount" readonly>
+    </div>
+    <div class="result-box sgst-box">
+      <label for="sgstAmount">SGST (INR):</label>
+      <input type="text" id="sgstAmount" readonly>
+    </div>
+    <div class="result-box cgst-box">
+      <label for="totalGst">Total GST (INR):</label>
+      <input type="text" id="totalGst" readonly>
+    </div>
+  </div>
+
+  <script>
+    function calculate() {
+      const grossAmountInput = document.getElementById("grossAmount");
+      const gstRateInput = document.getElementById("gstRate");
+      const netAmountInput = document.getElementById("netAmount");
+      const cgstAmountInput = document.getElementById("cgstAmount");
+      const sgstAmountInput = document.getElementById("sgstAmount");
+      const totalGstInput = document.getElementById("totalGst");
+
+      const grossAmount = parseFloat(grossAmountInput.value);
+      const gstRate = parseFloat(gstRateInput.value);
+
+      // Calculate Total GST amount
+      const totalGst = (grossAmount * gstRate) / (100 + gstRate);
+      totalGstInput.value = totalGst.toFixed(2);
+
+      // Calculate CGST and SGST amounts (considering equal division)
+      const cgstAmount = totalGst / 2;
+      const sgstAmount = cgstAmount;
+      cgstAmountInput.value = cgstAmount.toFixed(2);
+      sgstAmountInput.value = sgstAmount.toFixed(2);
+
+      // Calculate Net Amount
+      const netAmount = grossAmount - totalGst;
+      netAmountInput.value = netAmount.toFixed(2);
+    }
+  </script>
+ <br>
+
+  <p class="disclaimer">
+    Disclaimer: This is just a web-based tool for a rough estimate. Consult your accountant in case of any doubt.
+  </p>
+</body>
+</html>
