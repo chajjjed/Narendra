@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            width: 200px;
+            height: 50px;
+            font-size: 18px;
+            background-color: #f0f0f0;
+            border: none;
+        }
+        table {
+            margin: auto;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        /* Button colors */
+        button.number {
+            background-color: #4CAF50;
+            color: white;
+        }
+        button.operator {
+            background-color: #008CBA;
+            color: white;
+        }
+        button.clear {
+            background-color: #ff0000;
+            color: white;
+        }
+        button.calculate {
+            background-color: #ff9900;
+            color: white;
+        }
+        button.decimal {
+            background-color: #333;
+            color: white;
+       >
+        button.memory {
+            background-color: #9966ff; /* Purple */
+            color: white;
+        }
+        button.percentage {
+            background-color: #ffcc00; /* Yellow */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Colorful Calculator</h2>
+
+<table>
+    <tr>
+        <td colspan="4"><input type="text" id="result" readonly></td>
+    </tr>
+    <tr>
+        <td><button class="memory" onclick="memoryAdd()">M+</button></td>
+        <td><button class="memory" onclick="memorySubtract()">M-</button></td>
+        <td><button class="memory" onclick="memoryClear()">MC</button></td>
+        <td><button class="memory" onclick="memoryRecall()">MR</button></td>
+    </tr>
+    <tr>
+        <td><button class="number" onclick="appendNumber('7')">7</button></td>
+        <td><button class="number" onclick="appendNumber('8')">8</button></td>
+        <td><button class="number" onclick="appendNumber('9')">9</button></td>
+        <td><button class="operator" onclick="setOperator('/')">/</button></td>
+    </tr>
+    <tr>
+        <td><button class="number" onclick="appendNumber('4')">4</button></td>
+        <td><button class="number" onclick="appendNumber('5')">5</button></td>
+        <td><button class="number" onclick="appendNumber('6')">6</button></td>
+        <td><button class="operator" onclick="setOperator('*')">*</button></td>
+    </tr>
+    <tr>
+        <td><button class="number" onclick="appendNumber('1')">1</button></td>
+        <td><button class="number" onclick="appendNumber('2')">2</button></td>
+        <td><button class="number" onclick="appendNumber('3')">3</button></td>
+        <td><button class="operator" onclick="setOperator('-')">-</button></td>
+    </tr>
+    <tr>
+        <td><button class="number" onclick="appendNumber('0')">0</button></td>
+        <td><button class="decimal" onclick="appendDecimal()">.</button></td>
+        <td><button class="clear" onclick="clearResult()">C</button></td>
+        <td><button class="operator" onclick="setOperator('+')">+</button></td>
+    </tr>
+    <tr>
+        <td><button class="percentage" onclick="calculatePercentage()">%</button></td>
+        <td colspan="2"></td>
+        <td><button class="calculate" onclick="calculateResult()">=</button></td>
+    </tr>
+</table>
+
+<script>
+    let memory = 0;
+
+    function memoryAdd() {
+        try {
+            memory += eval(document.getElementById('result').value);
+        } catch (error) {
+            document.getElementById('result').value = 'Error';
+        }
+        clearResult();
+    }
+
+    function memorySubtract() {
+        try {
+            memory -= eval(document.getElementById('result').value);
+        } catch (error) {
+            document.getElementById('result').value = 'Error';
+        }
+        clearResult();
+    }
+
+    function memoryClear() {
+        memory = 0;
+    }
+
+    function memoryRecall() {
+        document.getElementById('result').value = memory;
+    }
+
+    function appendNumber(number) {
+        document.getElementById('result').value += number;
+    }
+
+    function setOperator(operator) {
+        document.getElementById('result').value += operator;
+    }
+
+    function appendDecimal() {
+        if (!document.getElementById('result').value.includes('.')) {
+            document.getElementById('result').value += '.';
+        }
+    }
+
+    function clearResult() {
+        document.getElementById('result').value = '';
+    }
+
+    function calculateResult() {
+        try {
+            document.getElementById('result').value = eval(document.getElementById('result').value);
+        } catch (error) {
+            document.getElementById('result').value = 'Error';
+        }
+    }
+
+    function calculatePercentage() {
+        try {
+            // Extract the current value and calculate the percentage
+            const currentValue = eval(document.getElementById('result').value);
+            const result = (currentValue * 0.01).toFixed(2);
+
+            // Display the result
+            document.getElementById('result').value = result;
+        } catch (error) {
+            document.getElementById('result').value = 'Error';
+        }
+    }
+</script>
+
+</body>
+</html>
