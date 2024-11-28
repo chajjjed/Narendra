@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f8ff; /* Light blue background */
+            color: #333;
+        }
+        .converter-box {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #ffffff; /* White background for converter boxes */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+        .converter-box:nth-child(odd) {
+            background-color: #e6f7ff; /* Light blue for odd boxes */
+        }
+        .converter-box:nth-child(even) {
+            background-color: #ccf2ff; /* Slightly darker blue for even boxes */
+        }
+        h1 {
+            color: #005b96; /* Darker blue for the title */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #0073e6; /* Blue color for the converter titles */
+            font-size: 1.2em;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Unit Converter</h1>
+
+    <!-- Length Converter -->
+    <div class="converter-box">
+        <h2>Length Converter</h2>
+        <label for="meterInput">Meters:</label>
+        <input type="number" id="meterInput" oninput="convertLength()">
+        <label for="feetOutput">Feet:</label>
+        <input type="number" id="feetOutput" oninput="convertLength(true)">
+    </div>
+
+    <!-- Temperature Converter -->
+    <div class="converter-box">
+        <h2>Temperature Converter</h2>
+        <label for="celsiusInput">Celsius:</label>
+        <input type="number" id="celsiusInput" oninput="convertTemperature()">
+        <label for="fahrenheitOutput">Fahrenheit:</label>
+        <input type="number" id="fahrenheitOutput" oninput="convertTemperature(true)">
+    </div>
+
+    <!-- Area Converter -->
+    <div class="converter-box">
+        <h2>Area Converter</h2>
+        <label for="squareYardInput">Square Yards:</label>
+        <input type="number" id="squareYardInput" oninput="convertArea()">
+        <label for="squareMeterOutput">Square Meters:</label>
+        <input type="number" id="squareMeterOutput" oninput="convertArea(true)">
+    </div>
+
+    <!-- Weight Converter -->
+    <div class="converter-box">
+        <h2>Weight Converter</h2>
+        <label for="poundInput">Pounds:</label>
+        <input type="number" id="poundInput" oninput="convertWeight()">
+        <label for="kgOutput">Kilograms:</label>
+        <input type="number" id="kgOutput" oninput="convertWeight(true)">
+    </div>
+
+    <!-- Volume Converter -->
+    <div class="converter-box">
+        <h2>Volume Converter</h2>
+        <label for="literInput">Liters:</label>
+        <input type="number" id="literInput" oninput="convertVolume()">
+        <label for="gallonOutput">Gallons (US):</label>
+        <input type="number" id="gallonOutput" oninput="convertVolume(true)">
+    </div>
+
+    <!-- Speed Converter -->
+    <div class="converter-box">
+        <h2>Speed Converter</h2>
+        <label for="kmphInput">Kilometers per Hour:</label>
+        <input type="number" id="kmphInput" oninput="convertSpeed()">
+        <label for="mphOutput">Miles per Hour:</label>
+        <input type="number" id="mphOutput" oninput="convertSpeed(true)">
+    </div>
+
+    <script>
+        // Length Converter: Meters to Feet and Vice Versa
+        function convertLength(reverse = false) {
+            const meterInput = document.getElementById('meterInput').value;
+            const feetOutput = document.getElementById('feetOutput').value;
+
+            if (reverse) {
+                document.getElementById('meterInput').value = (feetOutput / 3.28084).toFixed(2);
+            } else {
+                document.getElementById('feetOutput').value = (meterInput * 3.28084).toFixed(2);
+            }
+        }
+
+        // Temperature Converter: Celsius to Fahrenheit and Vice Versa
+        function convertTemperature(reverse = false) {
+            const celsiusInput = document.getElementById('celsiusInput').value;
+            const fahrenheitOutput = document.getElementById('fahrenheitOutput').value;
+
+            if (reverse) {
+                document.getElementById('celsiusInput').value = ((fahrenheitOutput - 32) * 5/9).toFixed(2);
+            } else {
+                document.getElementById('fahrenheitOutput').value = ((celsiusInput * 9/5) + 32).toFixed(2);
+            }
+        }
+
+        // Area Converter: Square Yards to Square Meters and Vice Versa
+        function convertArea(reverse = false) {
+            const squareYardInput = document.getElementById('squareYardInput').value;
+            const squareMeterOutput = document.getElementById('squareMeterOutput').value;
+
+            if (reverse) {
+                document.getElementById('squareYardInput').value = (squareMeterOutput / 0.836127).toFixed(2);
+            } else {
+                document.getElementById('squareMeterOutput').value = (squareYardInput * 0.836127).toFixed(2);
+            }
+        }
+
+        // Weight Converter: Pounds to Kilograms and Vice Versa
+        function convertWeight(reverse = false) {
+            const poundInput = document.getElementById('poundInput').value;
+            const kgOutput = document.getElementById('kgOutput').value;
+
+            if (reverse) {
+                document.getElementById('poundInput').value = (kgOutput / 0.453592).toFixed(2);
+            } else {
+                document.getElementById('kgOutput').value = (poundInput * 0.453592).toFixed(2);
+            }
+        }
+
+        // Volume Converter: Liters to Gallons (US) and Vice Versa
+        function convertVolume(reverse = false) {
+            const literInput = document.getElementById('literInput').value;
+            const gallonOutput = document.getElementById('gallonOutput').value;
+
+            if (reverse) {
+                document.getElementById('literInput').value = (gallonOutput / 0.264172).toFixed(2);
+            } else {
+                document.getElementById('gallonOutput').value = (literInput * 0.264172).toFixed(2);
+            }
+        }
+
+        // Speed Converter: Kilometers per Hour to Miles per Hour and Vice Versa
+        function convertSpeed(reverse = false) {
+            const kmphInput = document.getElementById('kmphInput').value;
+            const mphOutput = document.getElementById('mphOutput').value;
+
+            if (reverse) {
+                document.getElementById('kmphInput').value = (mphOutput / 0.621371).toFixed(2);
+            } else {
+                document.getElementById('mphOutput').value = (kmphInput * 0.621371).toFixed(2);
+            }
+        }
+    </script>
+
+</body>
+</html>
