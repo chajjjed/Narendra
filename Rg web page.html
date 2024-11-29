@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RajguruGold - Retail Jewellery Showroom</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background-color: #d4af37;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #e8c478;
+        }
+        nav a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        nav a:hover {
+            background-color: #f1d488;
+            border-radius: 5px;
+        }
+        .content {
+            padding: 20px;
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #d4af37;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .jewellery-images img {
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RajguruGold</h1>
+        <p>Your Trusted Retail Jewellery Showroom</p>
+        <p>Address: 32-33, Mahaveer Plaza, Feel Khana, Begum Bazar, Hyderabad-12</p>
+        <p>Contact: Amith - 9491672831</p>
+    </header>
+    <nav>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('latest')">Latest Jewellery Arrivals</a>
+        <a onclick="showPage('jewellery')">Jewellery Items</a>
+        <a onclick="showPage('about')">About Us</a>
+    </nav>
+
+    <div id="home" class="content active">
+        <h2>Welcome to RajguruGold!</h2>
+        <p>Explore our exclusive collection of gold and silver jewellery designed for every occasion.</p>
+    </div>
+
+    <div id="latest" class="content">
+        <h2>Latest Jewellery Arrivals</h2>
+        <p>View our latest jewellery collections here:</p>
+        <a href="https://drive.google.com/drive/folders/1JCDTtReZrpIGNeLHnd35SWQLemml-dKC?usp=sharing" target="_blank">View Latest Jewellery Arrivals</a>
+    </div>
+
+    <div id="jewellery" class="content">
+        <h2>Our Jewellery Collection</h2>
+        <a href="https://drive.google.com/drive/folders/1WbPrw520fZgmw3gkmmR2KadbnYBVKvVR?usp=sharing" target="_blank">View Full Collection</a>
+    </div>
+
+    <div id="about" class="content">
+        <h2>About Us</h2>
+        <p>
+            RajguruGold is a family-owned jewellery showroom located in the heart of Hyderabad. 
+            For years, we have been offering exquisite gold and silver jewellery designs, 
+            combining tradition with modern artistry. Our commitment is to provide high-quality 
+            jewellery that celebrates every milestone of your life.
+        </p>
+        <p>Visit us today and let us adorn you with timeless beauty.</p>
+    </div>
+
+    <footer>
+        © 2024 RajguruGold. All Rights Reserved.
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
