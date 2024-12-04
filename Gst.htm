@@ -4,9 +4,9 @@
   <title>GST Calculator</title>
   <style>
     :root {
-      --box-height: 70px; /* Adjust box height */
-      --font-size: 21px; /* Adjust font size */
-      --label-width: 120px; /* Adjust label width */
+      --box-height: 50px; /* Adjust box height */
+      --font-size: 16px; /* Adjust font size */
+      --label-width: 160px; /* Adjust label width */
     }
 
     body {
@@ -26,12 +26,15 @@
       text-align: right;
       color: #333;
       font-size: var(--font-size);
+      font-weight: bold;
+
     }
 
     input[type="number"], input[type="text"] {
-      padding: 5px;
+      padding: 2px;
       border: 1px solid #ccc;
       border-radius: 3px;
+      width: var(--label-width);
       font-size: var(--font-size);
       height: var(--box-height);
     }
@@ -39,6 +42,7 @@
     input[type="text"] {
       background-color: #f9f9f9;
       color: #333;
+      width: var(--label-width);
       font-weight: bold;
     }
 
@@ -57,12 +61,12 @@
     }
 
     .result-container {
-      margin-top: 20px;
+      margin-top: 35px;
     }
 
     .result-box {
       display: inline-block;
-      width: 200px;
+      width: var(--label-width);
       margin: 10px;
       height: var(--box-height);
       line-height: var(--box-height);
@@ -73,19 +77,22 @@
     .cgst-box {
       background-color: #66bb6a;
       border-radius: 3px;
-      padding: 5px;
+      padding: 2px;
     }
 
     .sgst-box {
       background-color: #ff7043;
       border-radius: 3px;
-      padding: 5px;
+      padding: 2px;
     }
 
     .disclaimer {
       margin-top: 20px;
-      color: #777;
+      color: #ff7043;
+     /*      color: #777;*/
       font-size: calc(var(--font-size) - 2px);
+      font-weight: bold;
+
     }
 
     @media (max-width: 600px) {
@@ -96,7 +103,7 @@
       }
 
       .result-box {
-        width: 150px;
+        width: 170px;
       }
     }
   </style>
@@ -107,15 +114,17 @@
   <input type="number" id="grossAmount" step="0.01">
   <br>
   <br>
+
   <label for="gstRate">GST Rate (%):</label>
   <input type="number" id="gstRate" step="0.01">
   <br>
   <br>
   <button onclick="calculate()">Calculate</button>
   <br>
+
   <div class="result-container">
     <div class="result-box sgst-box">
-      <label for="netAmount">Net Amount:</label>
+      <label for="netAmount">Net Amount (INR):</label>
       <input type="text" id="netAmount" readonly>
     </div>
     <div class="result-box cgst-box">
@@ -127,7 +136,7 @@
       <input type="text" id="sgstAmount" readonly>
     </div>
     <div class="result-box cgst-box">
-      <label for="totalGst">Total GST:</label>
+      <label for="totalGst">Total GST (INR):</label>
       <input type="text" id="totalGst" readonly>
     </div>
   </div>
@@ -166,7 +175,7 @@
   <br>
 
   <p class="disclaimer">
-    Disclaimer: This is just a web-based tool for a rough estimate. Consult your accountant in case of any doubt.
+    Disclaimer: This is just a web-based tool for rough estimate. Consult your accountant in case of any doubt.
   </p>
 </body>
 </html>
