@@ -29,7 +29,7 @@
     }
 
     input[type="number"], input[type="text"] {
-      padding: 15px;
+      padding: 5px;
       border: 1px solid #ccc;
       border-radius: 3px;
       font-size: var(--font-size);
@@ -73,13 +73,13 @@
     .cgst-box {
       background-color: #66bb6a;
       border-radius: 3px;
-      padding: 15px;
+      padding: 5px;
     }
 
     .sgst-box {
       background-color: #ff7043;
       border-radius: 3px;
-      padding: 15px;
+      padding: 5px;
     }
 
     .disclaimer {
@@ -106,11 +106,13 @@
   <label for="grossAmount">Gross Amount (INR):</label>
   <input type="number" id="grossAmount" step="0.01">
   <br>
+  <br>
   <label for="gstRate">GST Rate (%):</label>
   <input type="number" id="gstRate" step="0.01">
   <br>
   <br>
   <button onclick="calculate()">Calculate</button>
+  <br>
   <div class="result-container">
     <div class="result-box sgst-box">
       <label for="netAmount">Net Amount:</label>
