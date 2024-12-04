@@ -1,82 +1,160 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Fixed Deposit Compound Interest Calculator</title>
+  <title>Fixed Deposit Calculator</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
     }
 
     h1 {
-      color: #0066cc;
+      color: #0047ab;
+      margin-top: 20px;
     }
 
     .container {
-      margin: 50px auto;
-      max-width: 400px;
+      margin: 20px auto;
+      max-width: 90%;
       padding: 20px;
-      border: 2px solid #0066cc;
+      background: #ffffff;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
+      transition: all 0.3s ease-in-out;
     }
 
     label {
       display: block;
       margin-top: 10px;
-    }
-
-    input[type="text"], select {
-      width: 100%;
-      padding: 8px;
-      margin: 5px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .result {
-      margin-top: 20px;
       font-weight: bold;
-      color: #009900;
+      color: #333;
+      text-align: center;
+      width:130;
+    }
+
+    .box {
+      width: 30%;
+      padding: 5px;
+      margin: 10px 0;
+      border: 4px solid;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    /* Different bold-colored borders and text colors for each box */
+    #amount {
+      border-color: #ff4500;
+      color: #ff4500;
+    }
+
+    #rate {
+      border-color: #32cd32;
+      color: #32cd32;
+    }
+
+    #period {
+      border-color: #1e90ff;
+      color: #1e90ff;
+    }
+
+    #compounding {
+      border-color: #ffa500;
+      color: #ffa500;
+    }
+
+    #result {
+      border-color: #800080;
+      color: #800080;
       font-size: 1.2rem;
     }
 
     button {
-      background-color: #0066cc;
+      background-color: #0047ab;
       color: #fff;
-      padding: 10px 20px;
+      padding: 12px 20px;
       border: none;
-      border-radius: 4px;
+      border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #0052a3;
+      background-color: #003580;
+    }
+
+    .disclaimer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ff7043;
+     font-weight: bold;
+
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .box {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      button {
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+
+      .result {
+        font-size: 1rem;
+      }
+
+   .disclaimer {
+      margin-top: 20px;
+      color: #ff7043;
+      font-size: calc(var(--font-size) - 2px);
+      font-weight: bold;
+
+    }
+
+
+
+
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Fixed Deposit Compound Interest Calculator</h1>
+    <h3>Fixed Deposit Calculator</h3>
     <label for="amount">Fixed Deposit Amount:</label>
-    <input type="text" id="amount" placeholder="Enter the amount" />
+    <input type="text" id="amount" class="box" placeholder="Enter the amount" />
 
     <label for="rate">Rate of Interest:</label>
-    <input type="text" id="rate" placeholder="Enter the rate of interest" />
+    <input type="text" id="rate" class="box" placeholder="Enter the rate of interest" />
 
     <label for="period">Fixed Deposit Period (in months):</label>
-    <input type="text" id="period" placeholder="Enter the period in months" />
+    <input type="text" id="period" class="box" placeholder="Enter the period in months" />
 
     <label for="compounding">Compounding Option:</label>
-    <select id="compounding">
+    <select id="compounding" class="box">
       <option value="quarterly">Quarterly</option>
       <option value="half-yearly">Half-Yearly</option>
       <option value="yearly">Yearly</option>
     </select>
+<br>
 
     <button onclick="calculateCompoundInterest()">Calculate</button>
 
-    <div class="result" id="result"></div>
+    <div id="result" class="box"></div>
   </div>
+
 
   <script>
     function calculateCompoundInterest() {
@@ -96,13 +174,11 @@
         }
       }
 
-      document.getElementById('result').innerText = `Total Due Amount: $${totalDueAmount.toFixed(2)}`;
+      document.getElementById('result').innerText = `Total Due Amount: ₹${totalDueAmount.toFixed(2)}`;
     }
   </script>
- <br>
-
   <p class="disclaimer">
-    Disclaimer: This is just a web-based tool for a rough estimate. Consult your accountant in case of any doubt.
+    Disclaimer: This is just a web-based tool for rough estimate. Consult your accountant in case of any doubt.
   </p>
 
 </body>
