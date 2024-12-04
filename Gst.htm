@@ -3,6 +3,12 @@
 <head>
   <title>Gross Amount, GST, CGST, and SGST Calculator</title>
   <style>
+    :root {
+      --box-height: 50px; /* Adjust box height */
+      --font-size: 16px; /* Adjust font size */
+      --label-width: 120px; /* Adjust label width */
+    }
+
     body {
       font-family: Arial, sans-serif;
       background-color: #f0f0f0;
@@ -11,25 +17,26 @@
 
     h1 {
       color: #333;
+      font-size: calc(var(--font-size) + 6px);
     }
 
     label {
       display: inline-block;
-      width: 100px;
+      width: var(--label-width);
       text-align: right;
       color: #333;
+      font-size: var(--font-size);
     }
 
-    input[type="number"] {
+    input[type="number"], input[type="text"] {
       padding: 5px;
       border: 1px solid #ccc;
       border-radius: 3px;
+      font-size: var(--font-size);
+      height: var(--box-height);
     }
 
     input[type="text"] {
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
       background-color: #f9f9f9;
       color: #333;
       font-weight: bold;
@@ -42,6 +49,7 @@
       border: none;
       border-radius: 3px;
       cursor: pointer;
+      font-size: var(--font-size);
     }
 
     button:hover {
@@ -54,21 +62,42 @@
 
     .result-box {
       display: inline-block;
-      width: 150px;
+      width: 200px;
       margin: 10px;
+      height: var(--box-height);
+      line-height: var(--box-height);
+      vertical-align: middle;
+      font-size: var(--font-size);
     }
 
     .cgst-box {
       background-color: #66bb6a;
+      border-radius: 3px;
+      padding: 5px;
     }
 
     .sgst-box {
       background-color: #ff7043;
+      border-radius: 3px;
+      padding: 5px;
     }
 
     .disclaimer {
       margin-top: 20px;
       color: #777;
+      font-size: calc(var(--font-size) - 2px);
+    }
+
+    @media (max-width: 600px) {
+      :root {
+        --box-height: 40px;
+        --font-size: 14px;
+        --label-width: 100px;
+      }
+
+      .result-box {
+        width: 150px;
+      }
     }
   </style>
 </head>
@@ -128,7 +157,11 @@
       netAmountInput.value = netAmount.toFixed(2);
     }
   </script>
- <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
   <p class="disclaimer">
     Disclaimer: This is just a web-based tool for a rough estimate. Consult your accountant in case of any doubt.
